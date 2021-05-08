@@ -1,0 +1,86 @@
+.container-fluid{
+    position: relative;
+}
+.main{
+    margin: 0px;
+    position: relative;          
+    padding-top: 5%;
+    padding-bottom: 5%;
+	background-image: linear-gradient(180deg,rgb(78, 7, 78) 50%,#EEE 50%);
+	           
+}
+.detail{
+    background-color: white;
+    width: 70%;
+    padding: 3%;
+}
+.dap{
+    display: flex;flex-direction: row-reverse;justify-content: space-between;
+}
+
+.card{
+    border-radius:5px;
+    border-width: 2px;
+    border-color: gray;
+    position:relative;
+}
+.profilepic img{
+    width: 15vw;
+    height: 15vw;
+    object-fit: cover;
+    border:5px solid rgb(65,0,80);
+    position: relative;
+    
+
+}
+
+
+.action {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    background-color: #EEEEEE;
+    margin-bottom: 0px;
+    height: 100%;
+    padding: 10px;
+}
+
+.action a, i {
+    cursor: pointer;
+    padding: 0px 20px;
+}
+
+
+
+.navbar {
+    box-shadow: 0 5px 5px -5px #888888;
+}
+
+.nav-item {
+    padding: 0px 16px;  
+}
+
+.navbar.navbar-light li a.nav-link{
+    font-weight: bold;
+    color: indigo;    
+}
+
+.nav-link:hover {
+    color: black;
+}
+
+
+
+@media screen and (max-width: 726px) {
+    .profilepic img{
+        width: 20vw;
+        height: 20vw;
+    }
+    .dap{
+        flex-direction: column;
+    }
+    h2{
+        font-size: 25px;
+    }
+  }
+

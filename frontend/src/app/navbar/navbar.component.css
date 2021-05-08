@@ -1,0 +1,39 @@
+
+#search{
+    border: 2px solid rgb(78, 7, 78);
+}
+
+#search:hover{
+    background-color: rgb(78, 7, 78);
+    color: white;
+}
+
+
+#logout{
+    margin-left: 20px;
+}
+
+.nav-link:hover, .nav-link:focus{
+    color: #ffcc00 !important; 
+}
+
+.last:hover{
+    background-color: #ffcc00;
+    color: black !important;
+
+}
+
+
+@media only screen and (max-width: 278px){
+   
+
+    #cancel, #search, #logout{
+        margin-left: 0px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    
+}
+
+

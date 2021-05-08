@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="container-fluid main">
+    <div class="container detail">
+        <h6 style="color: rgb(77, 13, 99);" (click)="goBack()"><  Back to results</h6>
+        <br>      
+
+        <div class="dap">
+            <div class="profilepic">
+            
+                <img src="assets/profile_pic.png">
+            </div>
+            <br>
+            <div class="container details" style="display: flex;flex-direction: column;margin-right: 20px;padding:0px;">
+                <div><h2 style="color: rgb(77, 13, 99);"><b>{{name}}
+                </b></h2></div><br>
+                <div *ngFor="let detail of profile | keyvalue">
+                    <div *ngIf="detail.key != 'fullname'" class="card" >
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: rgb(77, 13, 99);"><b>{{detail.key}}</b></h5>
+                            <p class="card-text" style="color: gray;">{{detail.value}}</p>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            
+        </div>
+        <a class="btn btn-warning" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Raise Query
+          </a> 
+          <div class="collapse" id="collapseExample" style="margin-top: 10px;">
+            <div class="card card-body">
+                <div class="container" style=" padding:10px;border: 3px solid rgb(77, 13, 99)">
+                    <textarea [(ngModel)]="query" id="query" class="form-control" type="text" style="border: 2px solid grey; margin-bottom:10px" placeholder="Voice out your query" rows="4" ></textarea>
+                    <button (click)="send()" style="margin-right:0px; margin-left:auto" class="btn btn-block btn-warning send">Send</button>
+                </div>
+            </div>
+          </div>       
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="min-height: 100vh; background-image: linear-gradient(180deg,rgb(78, 7, 78) 50%,lightgrey 50%); padding-top: 20px;">
+    <div class="container p-5" style="width: 90%; background-color: white; min-height: 70vh;">
+        <h3 style="color: rgb(78,7,78); text-align: center;margin-bottom: 30px;">Event Requests</h3>
+        <div class="row" style="margin-bottom: 30px;">
+            <b class="text-warning col-lg-2 col-md-3" style="margin-top: 7px;">SHOWING: </b>
+            <button class=" btn btn-link col-lg-2 col-md-3" style="color: rgb(78,7,78);" (click)="getEvents('pending')"><b>PENDING</b></button>
+            <button class=" btn btn-link col-lg-2 col-md-3" style="color: rgb(78,7,78);" (click)="getEvents('approved')"><b>APPROVED</b></button>
+            <button class=" btn btn-link col-lg-2 col-md-3" style="color: rgb(78,7,78);" (click)="getEvents('declined')"><b>DECLINED</b></button>
+        </div>
+        <div class="row">
+            <div class="col-md-6" *ngFor="let request of requests;">
+                    <div class="card" style="margin-bottom: 15px;">
+                        <button class="card-body" (click)="showCanvas(request)" style="background-color: white;"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <p  style="margin-bottom: 15px;" style="color: rgb(78,7,78);" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Event Name: {{request.event_name}}</p>
+                            <p data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Requested Date: {{request.event_date}}</p>
+                        </button>
+                    </div>
+                     
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel" style="color: rgb(78,7,78);"><b>Event Request</b></h5>
+      
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    
+    <div class="offcanvas-body">
+        <h6 style="color: rgb(78,7,78);">Event Name:</h6>
+        <p style="margin-bottom: 30px;">{{request.event_name}}</p>
+        <h6 style="color: rgb(78,7,78);">Event By:</h6>
+        <p style="margin-bottom: 30px;">{{request.user_id}}</p>
+        <h6 style="color: rgb(78,7,78);">Event Date:</h6>
+        <p style="margin-bottom: 30px;">{{request.event_date}}</p>
+        <h6 style="color: rgb(78,7,78);">Event Venue:</h6>
+        <input type="text" class="form-control" [(ngModel)]="request.venue" style="margin-bottom: 30px; border: 2px solid rgb(78,7,78);">
+        <h6 style="color: rgb(78,7,78);">Description:</h6>
+        <p style="margin-bottom: 30px;">{{request.event_desc}}</p>
+        <h6 style="color: rgb(78,7,78);">Event Status:</h6>
+        <p style="margin-bottom: 30px;">{{request.status}}</p>
+
+        <button *ngIf="status=='pending'" class="btn btn-block btn-warning" style="width: 100%; margin-bottom: 15px;" (click)="updateEvent('approved')" data-bs-dismiss="offcanvas" aria-label="Close">Approve</button>
+        <button *ngIf="status=='pending'" class="btn btn-block btn-danger" style="width:100%; margin-bottom: 20px;" (click)="updateEvent('declined')" data-bs-dismiss="offcanvas" aria-label="Close">Decline</button>
+        
+    </div>
+  </div>

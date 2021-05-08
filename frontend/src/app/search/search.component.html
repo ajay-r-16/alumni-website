@@ -1,0 +1,71 @@
+
+<app-navbar></app-navbar>
+<div id="search_body">
+    <div id="search_box" class="container p-3 p-sm-5" >
+        <h1 id="search_heading"><b>RECAL</b></h1>
+        <h5 id="search_tag">Search your friends, favorite seniors & faculty and get in touch with them</h5>
+        <br>
+
+        <div class="input-group">
+        <input type="text" class="form-control" placeholder="search to connect" [(ngModel)]="name">
+        <button id="search_btn" class="btn px-4" type="button" (click)="getData()">Search</button>
+        </div>
+        <br>
+        <div id="search_bottom">
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" id="filter_btn" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-filter"></i> Filters
+            </button>
+            
+            <div class="dropdown-menu p-0 mt-2" aria-labelledby="dropdownMenuLink" >
+            <div class="card" >
+                <div class="card-body row">
+                <div class="col-12 col-sm-4" id="filter_buttons" style="color: rgb(78, 7, 78);">
+                    <input type="button" class="btn btn-block mb-2 col-12" value="Batch" (click)="changeFilter($event.target)">
+                    <input type="button" class="btn btn-block mb-2 col-12" value="Department" (click)="changeFilter($event.target)">
+                    <input type="button" class="btn btn-block mb-2 col-12" value="Company" (click)="changeFilter($event.target)">
+                    <input type="button" class="btn btn-block mb-2 col-12" value="Email" (click)="changeFilter($event.target)">
+                    
+                    
+                </div>
+                <div class="col-12 col-sm-8 row">
+                    <div class="col-12">
+                    <span for="filter_value" style="color: rgb(78, 7, 78);"><b>{{filter_title}}</b></span>
+                    
+                    <input type="text" class="form-control" [(ngModel)]="filter_value" >
+                    </div>
+
+                    <div class="offset-sm-4 col-10 col-sm-8 align-self-end" style="margin-top: 10px;">
+                    <button id="cancel" class="btn btn-secondary col">Cancel</button>
+                    <button id="apply" class="btn btn-warning col" (click)="applyFilter()" >Apply</button>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            </div>
+        </div>
+        <div id="chips">
+            <h6 id="eachChip"  class="px-2 py-1" *ngFor="let item of filter | keyvalue;" ><i class="fas fa-times" (click)="closeFilter($event.target)"></i> {{item.key}} : {{item.value}}</h6> 
+        </div>
+        </div>
+        
+    </div>
+
+
+    <div id="result_box" *ngIf="result.length" class="container-fluid p-5 mt-4">
+        <div class="results" *ngFor="let alumni of result" (click)="visitProfile(alumni._id)">
+            <div>
+                <img class="profile_img" src="" onerror="if (this.src != 'assets/profile_pic.png') this.src = 'assets/profile_pic.png';">
+            </div>
+            <div style="margin-left: 20px; line-height: 1;">
+                <h5 style="color: rgb(78, 7, 78);">{{ alumni.fullname }}</h5>
+                <h6>{{ alumni.department }}</h6>
+                <h6>{{ alumni.batch }}</h6>
+                <h6>{{ alumni.institution }}</h6>
+            </div>
+        </div>
+    </div>
+
+</div>
+    

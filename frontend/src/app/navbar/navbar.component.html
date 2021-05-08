@@ -1,0 +1,59 @@
+
+
+<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light px-1 px-sm-5" style="height: 8vh;min-height: 8vh;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><h1 style="font-family: Snell Roundhand, cursive;"><b style="color: rgb(78, 7, 78);">Rec</b><b class="text-warning">al</b></h1></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a style="color: rgb(78, 7, 78);" class="nav-link active" aria-current="page" routerLink="/home"><b>Home</b></a>
+          </li>
+          <li class="nav-item">
+            <a style="color: rgb(78, 7, 78);" class="nav-link " href="#" routerLink="/events"><b>Events</b></a>
+          </li>
+          <li *ngIf="role=='student' || role=='alumni'" class="nav-item">
+            <a style="color: rgb(78, 7, 78);" class="nav-link" href="#" routerLink="/queries"><b>Queries</b></a>
+          </li>
+          <li *ngIf="role=='faculty' || role=='admin'" class="nav-item">
+            <a style="color: rgb(78, 7, 78);" class="nav-link" href="#" routerLink="/requests"><b>Requests</b></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a style="color: rgb(78, 7, 78);" class="nav-link" href="#" routerLink="/aboutus"><b>About Us</b></a>
+          </li>
+        </ul>
+        <div class="mr-0 ml-auto" style="display: flex; flex-direction: row;">
+          <a id="search" class="btn" type="button" routerLink="/search"><i class="fas fa-search"></i> Search</a>
+
+          <div class="nav-item dropdown" style="margin-left: 15px;" >
+             <button class="btn btn-danger" (click)="logout()">Logout</button>
+          </div>
+
+          
+
+    
+          <!-- <div class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle text-warning"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i id="col" class="fa fa-user" style="color:red"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right " style="padding: 10px;background-color: #29333f" aria-labelledby="navbarDropdown"  >
+                
+                <h6 class="text-warning">Email :</h6>
+                <input type="text" readonly> -->
+                 <!-- <p style="float: right;">{{user}}</p>
+              
+              
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-warning" (click)="logout()" >Sign out</a>
+            </div>
+          </div> -->
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  
+  
+  

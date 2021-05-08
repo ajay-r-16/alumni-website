@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            
+            <th scope="col">User ID</th>
+            <th scope="col">Alumni ID</th>
+            <th scope="col">Query</th>
+            <th scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody *ngFor="let query of queries; index as i">
+          <tr>
+            <td>{{query.user_id}}</td>
+            <td>{{query.alumni_id}}</td>
+            <td>{{query.query}}</td>
+            <td *ngIf="query.action!=''">{{query.action}}</td>
+            <td *ngIf="query.action=='' && role == 'student'">Pending...
+              <div class="spinner-grow spinner-grow-sm text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </td>
+            <td *ngIf="query.action=='' && role == 'alumni'">
+              <button [attr.id]="'reply_btn' + i" class="btn btn-block btn-success" (click)="reply(i)">Reply</button>
+              <div [attr.id]="'msg' + i" style="display: none;">
+                <textarea class="form-control mb-2" [attr.id]="'message'+i" rows="3" placeholder="Enter your msg" ></textarea>
+                <button class="btn btn-block btn-secondary" (click)="cancelReply(i)">Cancel</button>
+                <button class="btn btn-block btn-warning" style="margin-left: 10px;" (click)="sendReply(query._id,i)">Send</button>
+              </div>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+</div>

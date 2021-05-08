@@ -1,0 +1,173 @@
+
+<div class="container-fluid navbar-light p-2 px-3 px-sm-5" style="height: 8vh;">
+    <div style="display: flex;flex-direction: row; justify-content: flex-end; align-items: center;">
+        <button class="btn btn-link text-dark mr-1" (click)="showLogin()"><b>Login</b></button>
+        <b class="mr-1 text-dark">|</b>
+        <button class="btn btn-link text-dark mr-1" (click)="showRegister()"><b>Register</b></button>
+    </div>
+</div>
+
+<div class="container-fluid" id="body" style="background-image: url('assets/REC.jpg');background-size:cover;min-height: 84vh;">
+    <div id="quote">
+        <h2 style="color:rgb(78, 7, 78); ;"><b>Still be connected with your institution</b></h2>
+        <p>Get all updates and connect all faculties once again</p>
+    </div>
+    
+    <div class="card px-1 px-sm-3" id="login" >
+        <div class="card-body" >
+            <h2 class="text-white mb-5" style="text-align: center;">Login</h2>
+            <form class="form" #loginForm="ngForm" (ngSubmit)="LoginForm(loginForm)">
+                <input class="form-control mb-4" type="text" name="email" placeholder="Email Address" ngModel>
+                <input class="form-control" type="password" name="password" placeholder="Password" ngModel>
+                <div class="mt-4">
+                    <span class="text-white">Forget Password ?</span><a class="text-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"> Click Here</a>
+                </div>
+                <button class="btn btn-warning px-4 px-sm-5 mt-4 mb-4"><b>Login</b></button>
+            </form>
+        </div>
+    </div>
+
+</div>
+<div class="card px-1 px-sm-3" id="register" style="display: none;">
+    <div class="card-body" >
+            <h2 class="text-white mb-5 col-12" style="text-align: center;">Register</h2>
+            <form class="form row" #registerForm="ngForm" (ngSubmit)="RegisterForm(registerForm)">
+                <div class="col-6">
+                    <input class="form-control mb-4" type="text" name="registerfn" ngModel placeholder="First Name">
+                </div>
+                <div class="col-6">
+                    <input class="form-control mb-4 col-auto" type="text" name="registerln" ngModel placeholder="Last Name">
+                </div>
+                <div class="col-12">
+                    <input class="form-control mb-4" type="email" name="registerEmail" ngModel placeholder="Email Address">
+                    <input class="form-control mb-4" type="text" name="phoneNumber" ngModel placeholder="Phone Number">
+
+                    <div class="input-group mb-4">
+                        <span class="input-group-text bg-warning px-3"><b>DOB</b></span>
+                        <input type="date" class="form-control" ngModel name="dob">
+                    </div>
+                            
+                    <input class="form-control mb-4" type="text" ngModel name="department" placeholder="Department">
+                    <div class="input-group mb-4">
+                        <span class="input-group-text bg-warning px-3"><b>Year</b></span>
+                        <select class="form-select" ngModel name="designation">
+                            <option value="1">1st year</option>
+                            <option value="2">2nd year</option>
+                            <option value="3">3rd year</option>
+                            <option value="4">4th year</option>
+                        </select>
+                    </div>
+                    <input class="form-control mb-4" ngModel name="batch" type="number" placeholder="Batch">
+                    <input class="form-control" ngModel type="password" name="registerPassword" placeholder="Password">
+                    <div class="mt-4">
+                        <span class="text-white">Already have an account ?</span><a  class="text-warning" (click)="showLogin()"> Login</a>
+                    </div>
+                
+                    <button class="btn btn-warning px-5 mt-4 mb-4" type="submit"><b>Register</b></button>
+                </div>
+            </form>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color:white;">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel" style="text-align: center; color:rgb(78, 7, 78)"><b>Reset Password</b></h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              
+          </div>
+          <div class="modal-body">
+            <form class="form-signin">
+                  <div class="form-label-group">
+                      <input type="text" name="email" class="form-control" [(ngModel)]="resetEmail" placeholder="Enter Registered email" style="border: 3px solid rgb(78, 7, 78);">
+                  </div>
+              <button class="btn btn-block btn-warning" type="submit" (click)="ResetEmail()"><b>Send OTP</b></button>
+              <br>
+            </form>
+            <!-- <div *ngIf="isload1" class="d-flex align-items-center justify-content-center">
+              <strong>Loading...</strong>
+              <div class="spinner-grow " role="status" aria-hidden="true"></div>
+            </div> -->
+            <!-- <div class="alert alert-danger alert-dismissible" id="otp_alert0" role="alert">
+              <b>{{response_text}}</b>
+              <button type="button" class="close" (click)="alertclose()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+  </div>
+  
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color:white;">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel" style="text-align: center; color: rgb(78, 7, 78);"><b>Reset Password</b></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="form-signin">
+            
+                <div class="form-label-group">
+                    <input style="border: 3px solid rgb(78, 7, 78);" type="text" name="otp" class="form-control" [(ngModel)]="resetToken" placeholder="Enter OTP" required>
+                    
+                  </div>
+            
+            <button class="btn btn-block btn-warning " type="submit"  (click)="ResetToken()"><b>Submit</b></button>
+            <br>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color:white;">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel" style="text-align: center; color: rgb(34, 33, 33);"><b>Reset Password</b></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #pass="ngForm" class="form-signin">
+            
+                <div class="form-label-group">
+                    <input style="border: 3px solid rgb(34, 33, 33);" type="password" name="password1" class="form-control" [(ngModel)]="resetPassword1" placeholder="Enter new password" required>
+                    
+                  </div>
+
+                  <div class="form-label-group">
+                    <input style="border: 3px solid rgb(34, 33, 33);" type="password" name="password2" class="form-control" [(ngModel)]="resetPassword2" placeholder="Confirm password" required>
+                    
+                  </div>
+            
+            
+            <button class="btn btn-warning btn-block" type="submit"  (click)="ResetPassword()"><b>Submit</b></button>
+            <br>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+<footer class="container-fluid px-2 px-sm-4" style="margin-bottom: 0px;margin-top: auto;background-color: rgb(78, 7, 78); min-height: 8vh;
+            color: white; display: flex;flex-direction: row;justify-content: space-between;font-size: small; align-items: center;">
+    <span>Official alumni connect site of <b>Rajalakshmi Engineering College</b></span>
+    <span style="margin-left: 10px;">Designed by the students of <b>Computer Science & Engineering</b></span>
+
+</footer>
+
+
+
+
